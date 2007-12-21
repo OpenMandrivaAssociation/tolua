@@ -12,6 +12,7 @@ BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
 Provides:	tolua-devel
 Requires:	%{name}-devel = %{version}-%{release}
+BuildRoot:      %{_tmppath}/%{name}-%{version}-buildroot
 
 %description
 tolua is a tool that greatly simplifies the integration of C/C++ 
