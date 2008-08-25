@@ -1,12 +1,12 @@
 Name:           tolua
 Summary:        A tool that greatly simplifies the integration of C/C++ code with Lua
-Version:        5.0
-Release:        %mkrel 3
+Version:        5.1b
+Release:        %mkrel 1
 License:        GPL
 Group:          Development/Other
 URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
 Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.bz2
-Patch0:         %{name}-5.0-fixes.patch
+Patch1:		tolua-5.1b-config.patch
 BuildRequires:	dos2unix
 BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
@@ -32,12 +32,13 @@ Header files for tolua.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch -p1
-
-dos2unix  doc/*.html
-chmod 644 doc/*
+%patch1 -p1
 
 %build
+# (tpg) needed for patch 1
+sed -i -e 's/libdir/%{_lib}/g' config
+sed -i -e 's/rpmflag/%{optflags}/g' config
+
 %make
 
 %install
@@ -61,6 +62,6 @@ rm -rf %{buildroot}
 
 %files -n %{name}-devel
 %defattr(-,root,root)
-%doc INSTALL README doc/
+%doc INSTALL README
 %{_includedir}/%{name}.h
 %{_libdir}/lib%{name}.a
