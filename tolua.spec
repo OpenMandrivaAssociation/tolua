@@ -1,13 +1,11 @@
 Name:           tolua
 Summary:        A tool that greatly simplifies the integration of C/C++ code with Lua
-Version:        5.1b
+Version:        5.1.2
 Release:        %mkrel 1
 License:        GPL
 Group:          Development/Other
 URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
-Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.bz2
-Patch1:		tolua-5.1b-config.patch
-BuildRequires:	dos2unix
+Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.gz
 BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
 Provides:	tolua-devel
@@ -32,13 +30,15 @@ Header files for tolua.
 
 %prep
 %setup -q -n %{name}-%{version}
-%patch1 -p1
+find -name "*.o" | xargs rm
+sed -i	-e "s@LUA=/usr/local@LUA=/usr@" \
+	-e "s@LUALIB=$(LUA)/lib@LUALIB=$(LUA)/%{_lib}@" \
+	-e "s@CFLAGS=@CFLAGS=%{optflags}@" \
+	-e "s@CXXFLAGS=@CXXFLAGS=%{optflags}@" \
+	config
+
 
 %build
-# (tpg) needed for patch 1
-sed -i -e 's/libdir/%{_lib}/g' config
-sed -i -e 's/rpmflag/%{optflags}/g' config
-
 %make
 
 %install
