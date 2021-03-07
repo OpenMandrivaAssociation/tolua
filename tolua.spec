@@ -1,7 +1,7 @@
 Name:           tolua
 Summary:        A tool that greatly simplifies the integration of C/C++ code with Lua
-Version:        5.1.2
-Release:        3
+Version:        5.2.4
+Release:        1
 License:        GPL
 Group:          Development/Other
 URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
