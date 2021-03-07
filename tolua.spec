@@ -28,7 +28,7 @@ Header files for tolua.
 
 %prep
 %setup -q -n %{name}-%{version}
-find -name "*.o" | xargs rm
+#find -name "*.o" | xargs rm
 sed -i	-e "s@LUA=/usr/local@LUA=/usr@" \
 	-e "s@LUALIB=$(LUA)/lib@LUALIB=$(LUA)/%{_lib}@" \
 	-e "s@CFLAGS=@CFLAGS=%{optflags}@" \
