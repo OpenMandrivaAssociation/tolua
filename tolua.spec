@@ -6,6 +6,9 @@ License:        GPL
 Group:          Development/Other
 URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
 Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.gz
+Patch0:         %{name}-5.2.0-optflags.patch
+Patch1:         %{name}-5.2.0-shared.patch
+
 BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
 Requires:	%{name}-devel = %{EVRD}
@@ -27,6 +30,9 @@ Provides:	tolua-devel = %{version}-%{release}
 Header files for tolua.
 
 %prep
+%patch0 -p1
+%patch1 -p1
+
 %setup -q -n %{name}-%{version}
 #find -name "*.o" | xargs rm
 sed -i	-e "s@LUA=/usr/local@LUA=/usr@" \
