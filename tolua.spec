@@ -4,7 +4,7 @@ Version:        5.2.4
 Release:        1
 License:        GPL
 Group:          Development/Other
-URL:            http://www.tecgraf.puc-rio.br/~celes/tolua/
+URL:            https://www.tecgraf.puc-rio.br/~celes/tolua/
 Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.gz
 BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
