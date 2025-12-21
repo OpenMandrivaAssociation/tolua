@@ -6,6 +6,7 @@ License:        GPL
 Group:          Development/Other
 URL:            https://www.tecgraf.puc-rio.br/~celes/tolua/
 Source0:        ftp://ftp.tecgraf.puc-rio.br/pub/users/celes/tolua/%{name}-%{version}.tar.gz
+BuildRequires:	make
 BuildRequires:	lua-devel
 Requires:	lua >= 5.0.2
 Requires:	%{name}-devel = %{EVRD}
